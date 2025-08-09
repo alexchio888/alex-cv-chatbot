@@ -164,7 +164,7 @@ render_sidebar(
 )
 
 # --- Connect to Snowflake ---
-@st.cache_resource(ttl=None)
+@st.cache_resource()
 def create_session():
     connection_parameters = {
         "account": st.secrets["account"],
