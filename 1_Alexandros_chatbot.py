@@ -187,7 +187,8 @@ except Exception as e:
         "⚠️ The chatbot is temporarily unavailable due to high traffic or maintenance. Please try again shortly."
     )
 
-
+if "session_id" not in st.session_state:
+    st.session_state["session_id"] = f"session_{datetime.utcnow().isoformat()}"
 if "show_feedback_form" not in st.session_state:
     st.session_state.show_feedback_form = False
 if "feedback_submitted" not in st.session_state:
@@ -433,8 +434,6 @@ if not st.session_state.get("chatbot_error", False):
 # Only show input if no chatbot error
 chat_input = None
 transcript = None  
-if "session_id" not in st.session_state:
-    st.session_state["session_id"] = f"session_{datetime.utcnow().isoformat()}"
 
 if st.session_state["chatbot_error"] == False:
     # chat_input = st.chat_input(placeholder="Ask me anything about my background, skills, or experience…")
