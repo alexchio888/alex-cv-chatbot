@@ -90,8 +90,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 ) 
 
-if "session_id" not in st.session_state:
-    st.session_state["session_id"] = f"session_{datetime.utcnow().isoformat()}"
 
 col1, col2 = st.columns([1, 6])
 
@@ -478,6 +476,9 @@ elif chat_input:
 
 # Proceed if user_message was set
 if user_message:
+    if "session_id" not in st.session_state:
+        st.session_state["session_id"] = f"session_{datetime.utcnow().isoformat()}"
+
     user_message = user_message[:2000]
     st.session_state.messages.append({"role": "user", "content": user_message})
     intent = classify_intent(user_message)
