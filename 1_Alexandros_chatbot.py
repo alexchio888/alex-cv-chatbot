@@ -164,7 +164,7 @@ render_sidebar(
 )
 
 # --- Connect to Snowflake ---
-@st.cache_resource
+@st.cache_resource(ttl=None)
 def create_session():
     connection_parameters = {
         "account": st.secrets["account"],
@@ -478,14 +478,12 @@ elif chat_input:
 if user_message:
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = f"session_{datetime.utcnow().isoformat()}"
-
     user_message = user_message[:2000]
     st.session_state.messages.append({"role": "user", "content": user_message})
     intent = classify_intent(user_message)
     log_message_to_snowflake(
         session=session,
-        session_id="Alex_test",
-        # session_id=st.session_state["session_id"],
+        session_id=st.session_state["session_id"],
         role="user",
         message=user_message,
         intent=intent,
