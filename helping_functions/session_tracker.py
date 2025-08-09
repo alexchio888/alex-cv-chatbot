@@ -107,7 +107,7 @@ def handle_error(e: Exception, user_friendly_message: str = "An unexpected error
     """
     reset_chat()
     # Optionally display a user-facing error
-    st.error(f"❌ {user_friendly_message}")
+    st.error(f"{user_friendly_message}")
 
     # Expandable for developers
     with st.expander("🔍 See technical details"):
