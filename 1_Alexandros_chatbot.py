@@ -484,7 +484,8 @@ if user_message:
     intent = classify_intent(user_message)
     log_message_to_snowflake(
         session=session,
-        session_id=st.session_state["session_id"],
+        session_id="Alex_test",
+        # session_id=st.session_state["session_id"],
         role="user",
         message=user_message,
         intent=intent,
