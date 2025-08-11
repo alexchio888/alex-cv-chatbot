@@ -366,6 +366,8 @@ def get_prompt(latest_user_message, context, intent):
     - Then, generate a second version of the answer formatted for natural, friendly text-to-speech. Use short sentences, clear punctuation, and commas or ellipses to mark pauses. Avoid overly long clauses
 
     Respond strictly in this JSON format:
+     -Respond only with valid JSON, no explanations, no extra text.
+     -Please ensure the output is a single JSON object with no extra characters.
 
     {{
     "text": "Full detailed answer here",
